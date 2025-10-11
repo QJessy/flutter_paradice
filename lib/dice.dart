@@ -1,18 +1,16 @@
-import 'package:flutter/material.dart';
-
-class Dice {
+abstract class Dice {
   int nbFace = 0;
   int res = 0;
 
+  Dice(this.nbFace);
+
   int getNbFaces() {
-    return getNbFaces();
+    return nbFace;
   }
 
   int getRes() {
-    return getRes();
+    return res;
   }
 
-  void lancer() {
-
-  }
+  void lancer() {}
 }

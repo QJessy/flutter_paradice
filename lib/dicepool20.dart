@@ -1,8 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:paradice/dice20.dart';
 import 'package:paradice/dicepool.dart';
 
 class Dicepool20 extends Dicepool {
+  Dicepool20() {
+    addDice();
+  }
+
+  @override
   void addDice() {
-    
+    lesDices.add(Dice20());
   }
 }

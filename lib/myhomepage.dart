@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:math';
+import 'package:paradice/dicepool.dart';
+import 'package:paradice/dicepool6.dart';
+import 'package:paradice/dicepool10.dart';
+import 'package:paradice/dicepool20.dart';
+import 'package:paradice/dicepool100.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -11,83 +15,83 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int nbDes = 1;
-  int nbUn = 0;
-  int nbDeux = 0;
-  int nbTrois = 0;
-  int nbQuatre = 0;
-  int nbCinq = 0;
-  int nbSix = 0;
+  int typeDes = 0;
+  Dicepool desActuel = Dicepool6();
+  String nomDes = '';
+  List<int> occurrences = [];
   double moyenneDes = 0;
 
-  void lancerDes() {
-    nbUn = 0;
-    nbDeux = 0;
-    nbTrois = 0;
-    nbQuatre = 0;
-    nbCinq = 0;
-    nbSix = 0;
-    int total = 0;
+  void changerTypeDes(int type) {
+    typeDes = type;
+    switch (type) {
+      case 0:
+        desActuel = Dicepool6();
+        nomDes = '6';
+        break;
+      case 1:
+        desActuel = Dicepool10();
+        nomDes = '10';
+        break;
+      case 2:
+        desActuel = Dicepool20();
+        nomDes = '20';
+        break;
+      case 3:
+        desActuel = Dicepool100();
+        nomDes = '100';
+        break;
+    }
+    setState(() {});
+  }
 
-    for (int i = 0; i < nbDes; i++) {
-      int resultat = Random().nextInt(6) + 1;
-      total = total + resultat;
+  void ajouterDes() {
+    desActuel.addDice();
+    setState(() {});
+  }
 
-      switch (resultat) {
-        case 1:
-          nbUn++;
-          break;
-        case 2:
-          nbDeux++;
-          break;
-        case 3:
-          nbTrois++;
-          break;
-        case 4:
-          nbQuatre++;
-          break;
-        case 5:
-          nbCinq++;
-          break;
-        case 6:
-          nbSix++;
-          break;
+  void ajouterDixDes() {
+    for (int i = 0; i < 10; i++) {
+      desActuel.addDice();
+    }
+    setState(() {});
+  }
+
+  void retirerDes() {
+    if (desActuel.getNbDices() > 0 && desActuel.getNbDices() != 1) {
+      desActuel.removeDice();
+      setState(() {});
+    }
+  }
+
+  void retirerDixDes() {
+    if (desActuel.getNbDices() > 0) {
+      if (desActuel.getNbDices() <= 10) {
+        desActuel.lesDices.clear();
+        desActuel.addDice();
+      } else {
+        for (int i = 0; i < 10; i++) {
+          desActuel.removeDice();
+        }
       }
     }
-
-    moyenneDes = total / nbDes;
     setState(() {});
   }
 
-  void dUn() {
-    nbDes = 1;
+  void resetDes() {
+    desActuel.lesDices.clear();
+    desActuel.addDice();
     setState(() {});
   }
 
-  void dPlusUn() {
-    nbDes++;
+  void lancerDes() {
+    desActuel.lancerLesDices();
+    occurrences = desActuel.calculResultat();
+    moyenneDes = desActuel.calculMoyenne();
     setState(() {});
   }
 
-  void dMinusUn() {
-    if (nbDes > 1) {
-      nbDes--;
-    }
-    setState(() {});
-  }
-
-  void dPlusDix() {
-    nbDes = nbDes + 10;
-    setState(() {});
-  }
-
-  void dMinusDix() {
-    if (nbDes < 10) {
-      nbDes = 1;
-    } else {
-      nbDes = nbDes - 10;
-    }
-    setState(() {});
+  Widget affichageResultats() {
+    return Text('---------- A FAIRE -----------');
   }
 
   @override
@@ -102,16 +106,43 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(
+                MediaQuery.of(context).size.height * 0.01,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => changerTypeDes(0),
+                    child: Text("D6"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => changerTypeDes(1),
+                    child: Text("D10"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => changerTypeDes(2),
+                    child: Text("D20"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => changerTypeDes(3),
+                    child: Text("D100"),
+                  ),
+                ],
+              ),
+            ),
+
+            Padding(
+              padding: EdgeInsets.all(
                 MediaQuery.of(context).size.height * 0.02,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  ElevatedButton(onPressed: dMinusDix, child: Text("-10")),
-                  ElevatedButton(onPressed: dMinusUn, child: Text("-1")),
-                  ElevatedButton(onPressed: dUn, child: Text("1")),
-                  ElevatedButton(onPressed: dPlusUn, child: Text("+1")),
-                  ElevatedButton(onPressed: dPlusDix, child: Text("+10")),
+                  ElevatedButton(onPressed: retirerDixDes, child: Text("-10")),
+                  ElevatedButton(onPressed: retirerDes, child: Text("-1")),
+                  ElevatedButton(onPressed: resetDes, child: Text("1")),
+                  ElevatedButton(onPressed: ajouterDes, child: Text("+1")),
+                  ElevatedButton(onPressed: ajouterDixDes, child: Text("+10")),
                 ],
               ),
             ),
@@ -121,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 MediaQuery.of(context).size.height * 0.01,
               ),
               child: Text(
-                'Nombre de D6: $nbDes',
+                'Nombre de D$nomDes: ${desActuel.getNbDices()}',
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -139,31 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text('Nombre de 1: $nbUn'),
-                    Text('Nombre de 4: $nbQuatre'),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text('Nombre de 2: $nbDeux'),
-                    Text('Nombre de 5: $nbCinq'),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text('Nombre de 3: $nbTrois'),
-                    Text('Nombre de 6: $nbSix'),
-                  ],
-                ),
-              ],
-            ),
+            affichageResultats(),
 
             Padding(
               padding: EdgeInsets.all(
