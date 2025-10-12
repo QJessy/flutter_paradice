@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:paradice/screens/statistiques_screen.dart';
-import 'package:paradice/screens/personnalisee_screen.dart';
+import 'package:paradice/screens/personnalise_screen.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -17,6 +17,7 @@ class MenuScreen extends StatelessWidget {
         elevation: 8,
         shadowColor: Colors.black.withValues(),
       ),
+      // Ajout d'un drawer qui quand on appuie sur le logo en question, ça ouvre un panel sur la gauche où on peut se rediriger vers les pages existantes
       drawer: Drawer(
         child: Container(
           color: Colors.white,
@@ -42,6 +43,7 @@ class MenuScreen extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  // Permet quand on clique sur le texte de nous amener vers la page
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
@@ -53,6 +55,7 @@ class MenuScreen extends StatelessWidget {
                         ),
                       );
                     },
+                    // Affiche une ligne de texte nommé "Accès aux statistiques" qui fait nous redirige vers la page en question
                     child: Container(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
@@ -66,16 +69,18 @@ class MenuScreen extends StatelessWidget {
                     ),
                   ),
 
+                  // Permet quand on clique sur le texte de nous amener vers la page
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const StatistiquesScreen(title: 'Personnalisé'),
+                          builder: (context) => const PersonaliseScreen(title: 'Personnalisé'),
                         ),
                       );
                     },
+                    // Affiche une ligne de texte nommé "Accès aux dés personnalisés" qui fait nous redirige vers la page en question
                     child: Container(
                       padding: EdgeInsets.all(8.0),
                       child: Text(
@@ -99,6 +104,7 @@ class MenuScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Affiche le logo para'dice sur un fond vert
               Container(
                 color: Color(0xFF2E7D32),
                 child: Center(
@@ -113,6 +119,7 @@ class MenuScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              // Création du bouton "Accès aux statistiques" permettant d'aller sur la page des statistiques
               Padding(
                 padding: EdgeInsets.all(
                   MediaQuery.of(context).size.height * 0.02,
@@ -130,12 +137,13 @@ class MenuScreen extends StatelessWidget {
                   child: const Text('Accès aux statistiques'),
                 ),
               ),
+              // Création du bouton "Accès aux dés personnalisés" permettant d'aller sur la page des dés customs
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const StatistiquesScreen(title: 'Personnalisé'),
+                      builder: (context) => const PersonaliseScreen(title: 'Personnalisé'),
                     ),
                   );
                 },
