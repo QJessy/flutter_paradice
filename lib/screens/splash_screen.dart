@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paradice/myhomepage.dart';
+import 'package:paradice/screens/menu_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,11 +14,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Créer un délai de 5s où la page de chargement apparaît avant d'afficher le menu
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const MyHomePage(title: 'Para\'Dice'),
+          builder: (context) => const MenuScreen(),
         ),
       );
     });

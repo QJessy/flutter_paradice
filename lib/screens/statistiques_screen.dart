@@ -6,15 +6,15 @@ import 'package:paradice/classes/dicepool10.dart';
 import 'package:paradice/classes/dicepool20.dart';
 import 'package:paradice/classes/dicepool100.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class StatistiquesScreen extends StatefulWidget {
+  const StatistiquesScreen({super.key, required this.title});
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<StatistiquesScreen> createState() => _StatistiquesScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _StatistiquesScreenState extends State<StatistiquesScreen> {
   // Déclaration des variables nécessaires au fonctionnement de l'application
   int typeDes = 0;
   Dicepool desActuel = Dicepool6();
@@ -173,8 +173,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Row(children: [Text(widget.title)]),
+        backgroundColor: Color(0xFF2E7D32),
+        title: Row(
+          children: [
+            Text(
+              widget.title,
+              style: TextStyle(color: Color.fromARGB(225, 255, 255, 255)),
+            ),
+          ],
+        ),
+        elevation: 8,
+        shadowColor: Colors.black.withValues(),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
