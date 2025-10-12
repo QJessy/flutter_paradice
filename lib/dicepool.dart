@@ -1,4 +1,3 @@
-import 'package:flutter/rendering.dart';
 import 'package:paradice/dice.dart';
 
 // Classe abstraite qui va être utilisée comme héritage pour les classes dicepool6.dart, dicepool10.dart, dicepool20.dart, dicepool100.dart
