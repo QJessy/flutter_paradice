@@ -1,4 +1,4 @@
-# Para'Dice - Projet réalisée par Jessy Quarez dans le cadre du BTS SIO
+# Para'Dice - Projet réalisée par Jessy Quarez
 
 Para'Dice est une application Flutter développée dans le cadre du projet n°1 du Bloc 2 de compétence
 Ce projet est une simulation d'un lancer de dés. 
@@ -36,11 +36,7 @@ Cette application permet aux joueurs de lancer un nombre personnalisable de dés
 ## Fonctionnement de l'application
 
 ### Configuration de l'application
-1) **Choix du type de dé :** L'utilisateur possède le choix entre 4 types de dès prédéfinis 
-    - D6 = 6 faces
-    - D10 = 10 faces
-    - D20 = 20 faces 
-    - D100 = 100 faces
+1) **Choix du type de dé :** L'utilisateur possède le choix entre 4 types de dès prédéfinis (D6, D10, D20, D100 soient 6, 10, 20, 100 faces)
 2) **Choix du nombre de dés à lancer** : L'utilisateur peut ajuster le nombre de dés à lancer grâce aux boutons -10, -1, 1, +1, +10
 3) **Lancement de l'application** : L'utilisateur, après avoir régler l'application, peut appuyer sur le bouton en bas à droite pour procéder au lancement des dés
 
