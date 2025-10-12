@@ -1,4 +1,4 @@
-import 'package:paradice/dice.dart';
+import 'package:paradice/classes/dice.dart';
 import 'dart:math';
 
 // Classe Dice10 en héritage de la classe Dice qui réecris la méthode "lancer" pour permettre de réaliser le lancer de dés avec le dés à 10 faces

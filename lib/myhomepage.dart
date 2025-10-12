@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:paradice/dicepool.dart';
-import 'package:paradice/dicepool6.dart';
-import 'package:paradice/dicepool10.dart';
-import 'package:paradice/dicepool20.dart';
-import 'package:paradice/dicepool100.dart';
+import 'package:paradice/classes/dicepool.dart';
+import 'package:paradice/classes/dicepool6.dart';
+import 'package:paradice/classes/dicepool10.dart';
+import 'package:paradice/classes/dicepool20.dart';
+import 'package:paradice/classes/dicepool100.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

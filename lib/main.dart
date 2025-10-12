@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paradice/myhomepage.dart';
+import 'package:paradice/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF2E7D32)),
       ),
-      home: const MyHomePage(title: 'Para\'Dice'),
+      home: const SplashScreen(),
     );
   }
 }

@@ -1,5 +1,5 @@
-import 'package:paradice/dice100.dart';
-import 'package:paradice/dicepool.dart';
+import 'package:paradice/classes/dice100.dart';
+import 'package:paradice/classes/dicepool.dart';
 
 class Dicepool100 extends Dicepool {
   Dicepool100() {

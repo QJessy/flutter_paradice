@@ -1,4 +1,4 @@
-import 'package:paradice/dice.dart';
+import 'package:paradice/classes/dice.dart';
 
 // Classe abstraite qui va être utilisée comme héritage pour les classes dicepool6.dart, dicepool10.dart, dicepool20.dart, dicepool100.dart
 abstract class Dicepool {
