@@ -61,6 +61,7 @@ L'utilisateur, après avoir appuyé sur le bouton du lancement des dés, voit su
 (en développement)
 
 ## Installation et Utilisation
+/!\ Vérifiez que vous possédez la bonne version de Flutter et Dart - Version à jour au 14/10/25 (3.35.6 pour Flutter & 3.9.2 pour Dart)
 1) git clone git@github.com:QJessy/flutter_paradice.git
 2) flutter pub get (installation des extensions du projet)
 3) flutter run (pour lancer l'application)
