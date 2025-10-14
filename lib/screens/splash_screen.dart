@@ -13,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Créer un délai de 5s où la page de chargement apparaît avant d'afficher le menu
+    // Créer un délai de 2s où la page de chargement apparaît avant d'afficher le menu
     Future.delayed(Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,

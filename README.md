@@ -15,7 +15,12 @@ Cette application permet aux joueurs de lancer un nombre personnalisable de dés
 
 ### Fichiers principaux de l'application
 - **main.dart :** Fichier de configuration générale de l'application
-- **myhomepage.dart :** Fichier gérant l'interface principale
+
+### Navigation sur l'application
+- **splash_screen.dart :** Écran de démarrage de l'application
+- **menu_screen.dart :** Page d'accueil pour accèder aux fonctionnalités
+- **statistiques_screen.dart :** Première fonctionnalité - Lancement de dès prédéfinis
+- **personalise_screen.dart :** Dexuième fonctionnalité - Ajout de dès personnalisés dans une pool (en développement)
 
 ### Fichiers contenant les classes abstraites
 - **dice.dart :** Classe abstraite définissant la structure commune à tous les dés
@@ -35,15 +40,25 @@ Cette application permet aux joueurs de lancer un nombre personnalisable de dés
 
 ## Fonctionnement de l'application
 
-### Configuration de l'application
+### Démarrage de l'application
+1) **Splash Screen :** Affichage du logo avec animation pendant le chargement
+2) **Menu Principal :** Navigation entre 2 pages : stastistiques et dès personnalisés
+
+### Configuration de l'application (Page - Accès aux statistiques)
 1) **Choix du type de dé :** L'utilisateur possède le choix entre 4 types de dès prédéfinis (D6, D10, D20, D100 soient 6, 10, 20, 100 faces)
 2) **Choix du nombre de dés à lancer** : L'utilisateur peut ajuster le nombre de dés à lancer grâce aux boutons -10, -1, 1, +1, +10
 3) **Lancement de l'application** : L'utilisateur, après avoir régler l'application, peut appuyer sur le bouton en bas à droite pour procéder au lancement des dés
 
-### Affichage des résultats
+### Affichage des résultats (Page - Accès aux statistiques)
 L'utilisateur, après avoir appuyé sur le bouton du lancement des dés, voit sur son écran, les différents informations pour conclure son lancement de dés :
     - Les statistiques du nombre d'occurances pour chaque face
     - La moyenne du lancer de dés
+
+### Configuration de l'application (Page - Accès aux dès personnalisés)
+(en développement)
+
+### Affichage des résultats (Page - Accès aux dès personnalisés)
+(en développement)
 
 ## Installation et Utilisation
 1) git clone git@github.com:QJessy/flutter_paradice.git
