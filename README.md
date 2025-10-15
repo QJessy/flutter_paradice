@@ -10,6 +10,7 @@ Cette application permet aux joueurs de lancer un nombre personnalisable de dés
 - **Calcul de la moyenne** du lancer de dés
 - **Personnalisation du nombre** de dès à lancer
 - **Affichage responsive** en fonction de l'écran
+- **Ajouter des dès personnalisés** pour un lancer de dès personnalisés (en développement)
 
 ## Arboresence du projet
 
@@ -51,8 +52,8 @@ Cette application permet aux joueurs de lancer un nombre personnalisable de dés
 
 ### Affichage des résultats (Page - Accès aux statistiques)
 L'utilisateur, après avoir appuyé sur le bouton du lancement des dés, voit sur son écran, les différents informations pour conclure son lancement de dés :
-    - Les statistiques du nombre d'occurances pour chaque face
-    - La moyenne du lancer de dés
+- Les statistiques du nombre d'occurances pour chaque face
+- La moyenne du lancer de dés
 
 ### Configuration de l'application (Page - Accès aux dès personnalisés)
 (en développement)
