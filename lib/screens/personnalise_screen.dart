@@ -90,7 +90,7 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF2E7D32),
+                        color: Color.fromARGB(225, 255, 255, 255),
                       ),
                     ),
                   ),
@@ -101,7 +101,7 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF2E7D32),
+                        color: Color.fromARGB(225, 255, 255, 255),
                       ),
                     ),
                   ),
@@ -112,7 +112,7 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF2E7D32),
+                        color: Color.fromARGB(225, 255, 255, 255),
                       ),
                     ),
                   ),
@@ -123,7 +123,7 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF2E7D32),
+                        color: Color.fromARGB(225, 255, 255, 255),
                       ),
                     ),
                   ),

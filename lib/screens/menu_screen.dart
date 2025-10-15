@@ -76,7 +76,8 @@ class MenuScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const PersonaliseScreen(title: 'Personnalisé'),
+                          builder: (context) =>
+                              const PersonaliseScreen(title: 'Personnalisé'),
                         ),
                       );
                     },
@@ -143,7 +144,8 @@ class MenuScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PersonaliseScreen(title: 'Personnalisé'),
+                      builder: (context) =>
+                          const PersonaliseScreen(title: 'Personnalisé'),
                     ),
                   );
                 },
