@@ -33,7 +33,7 @@ Cette application permet aux joueurs de lancer un nombre personnalisable de dés
 - **dice20.dart :** Classe héritant de Dice pour les dés à 20 faces
 - **dice100.dart :** Classe héritant de Dice pour les dés à 100 faces
 
-### Implémentation des différentes collections pour chaque types de dés
+### Implémentation des différentes collections pour chaque type de dés
 - **dicepool6.dart :** Classe héritant de DicePool pour gérer les collections de D6 en utilisant Dice6
 - **dicepool10.dart :** Classe héritant de DicePool pour gérer les collections de D10 en utilisant Dice10
 - **dicepool20.dart :** Classe héritant de DicePool pour gérer les collections de D20 en utilisant Dice20
