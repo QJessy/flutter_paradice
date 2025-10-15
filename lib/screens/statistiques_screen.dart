@@ -21,6 +21,7 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
   String nomDes = '6';
   List<int> occurrences = [];
   double moyenneDes = 0;
+  int nbFaces = 0;
 
   // Switch case permettant de séléctionner le type de dés avec lequel on veut jouer
   void changerTypeDes(int type) {
@@ -48,6 +49,8 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
 
   // Méthode permettant d'ajouter 1 dès au compteur du nombre de dés total
   void ajouterDes() {
+    desActuel.lesResultats.clear();
+    moyenneDes = 0;
     desActuel.addDice();
     setState(() {});
   }
@@ -55,6 +58,8 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
   // Méthode permettant d'ajouter 10 dès au compteur du nombre de dés total
   void ajouterDixDes() {
     for (int i = 0; i < 10; i++) {
+      desActuel.lesResultats.clear();
+      moyenneDes = 0;
       desActuel.addDice();
     }
     setState(() {});
@@ -63,6 +68,8 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
   // Méthode permettant de retirer 1 dés au compteur du nombre de dés total
   void retirerDes() {
     if (desActuel.getNbDices() > 0 && desActuel.getNbDices() != 1) {
+      desActuel.lesResultats.clear();
+      moyenneDes = 0;
       desActuel.removeDice();
       setState(() {});
     }
@@ -71,6 +78,8 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
   // Méthode permettant de retirer 10 dès au compteur du nombre de dés total
   void retirerDixDes() {
     if (desActuel.getNbDices() > 0) {
+      desActuel.lesResultats.clear();
+      moyenneDes = 0;
       if (desActuel.getNbDices() <= 10) {
         desActuel.lesDices.clear();
         desActuel.addDice();
@@ -85,6 +94,8 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
 
   // Méthode pour remettre le compteur de nombre de dés à 1
   void resetDes() {
+    desActuel.lesResultats.clear();
+    moyenneDes = 0;
     desActuel.lesDices.clear();
     desActuel.addDice();
     setState(() {});
@@ -100,8 +111,6 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
 
   // Widget permettant de créer l'affichage des statistiques avec les occurances pour chaque face
   Widget affichageResultats() {
-    int nbFaces = 0;
-
     // Permet de vérifier que la liste "LesDices" possède un dés :
     //    - Si oui, nbFaces va récupérer comme valeur le nombre de face du dés utilisés
     //    - Sinon, nbFaces prend par défaut le dés à 6 faces
@@ -112,7 +121,7 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
     }
 
     // Création de tableau des occurances en le remplissant avec des 0 sur le nombre de faces que le dé possède + 1 (car la face 0 existe pas)
-    List<int> occurrences = List.filled(nbFaces + 1, 0);
+    occurrences = List.filled(nbFaces + 1, 0);
     for (int UnResultat in desActuel.getLesResultats()) {
       if (UnResultat >= 1 && UnResultat <= nbFaces) {
         occurrences[UnResultat]++;

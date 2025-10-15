@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:paradice/classes/dicepool.dart';
-import 'package:paradice/classes/dicepool10.dart';
-import 'package:paradice/classes/dicepool100.dart';
-import 'package:paradice/classes/dicepool20.dart';
-import 'package:paradice/classes/dicepool6.dart';
+import 'package:paradice/classes/dice.dart';
+import 'package:paradice/classes/dice10.dart';
+import 'package:paradice/classes/dice100.dart';
+import 'package:paradice/classes/dice20.dart';
+import 'package:paradice/classes/dice6.dart';
 
 class PersonaliseScreen extends StatefulWidget {
   const PersonaliseScreen({super.key, required this.title});
@@ -13,30 +13,43 @@ class PersonaliseScreen extends StatefulWidget {
   State<PersonaliseScreen> createState() => _PersonaliseScreenState();
 }
 
-class _PersonaliseScreenState extends State<PersonaliseScreen> {
-  int typeDes = 0;
-  Dicepool desActuel = Dicepool6();
-  TextEditingController facesController = TextEditingController();
+class ResultatDes {
+  final int faces;
+  int nombre;
+  int somme;
 
-  @override
-  void changerTypeDes(int type) {
-    typeDes = type;
-    switch (type) {
-      case 0:
-        desActuel = Dicepool6();
+  ResultatDes(this.faces, this.nombre, this.somme);
+}
+
+class _PersonaliseScreenState extends State<PersonaliseScreen> {
+  String _valeurSaisie = '';
+  final _formKey = GlobalKey<FormState>();
+  List<Dice> lesDicesPersonnalises = [];
+
+  void addDice(int faces) {
+    switch (faces) {
+      case 6:
+        lesDicesPersonnalises.add(Dice6());
         break;
-      case 1:
-        desActuel = Dicepool10();
+      case 10:
+        lesDicesPersonnalises.add(Dice10());
         break;
-      case 2:
-        desActuel = Dicepool20();
+      case 20:
+        lesDicesPersonnalises.add(Dice20());
         break;
-      case 3:
-        desActuel = Dicepool100();
+      case 100:
+        lesDicesPersonnalises.add(Dice100());
         break;
     }
     setState(() {});
+    print(lesDicesPersonnalises.length);
   }
+
+  void viderPool() {
+    lesDicesPersonnalises.clear();
+  }
+
+  void ajouterDePersonnalise() {}
 
   @override
   Widget build(BuildContext context) {
@@ -75,16 +88,51 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
               ),
             ),
 
+            Center(
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: "Nombre de faces",
+                        ),
+                        validator: (valeur) {
+                          if (valeur == null || valeur.isEmpty) {
+                            return 'Veuillez entrer un nombre de faces';
+                          } else {
+                            _valeurSaisie = valeur.toString();
+                          }
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {}
+                        },
+                        child: const Text('Ajouter'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
             Padding(
               padding: EdgeInsets.all(
-                MediaQuery.of(context).size.height * 0.01,
+                MediaQuery.of(context).size.height * 0.02,
               ),
               // Permet de créer les boutons de sélection du type de dès en utilisant la méthode contenant le switch case du choix de dés
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton(
-                    onPressed: () => changerTypeDes(0),
+                    onPressed: () => addDice(6),
                     child: Text(
                       "D6",
                       style: const TextStyle(
@@ -95,7 +143,7 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () => changerTypeDes(1),
+                    onPressed: () => addDice(10),
                     child: Text(
                       "D10",
                       style: const TextStyle(
@@ -106,7 +154,7 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () => changerTypeDes(2),
+                    onPressed: () => addDice(20),
                     child: Text(
                       "D20",
                       style: const TextStyle(
@@ -117,7 +165,7 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () => changerTypeDes(3),
+                    onPressed: () => addDice(100),
                     child: Text(
                       "D100",
                       style: const TextStyle(
@@ -139,9 +187,9 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => viderPool(),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF2E7D32),
+                      backgroundColor: Colors.red,
                       foregroundColor: Color.fromARGB(225, 255, 255, 255),
                     ),
                     child: const Text('Vider le pool de dés'),
@@ -219,16 +267,16 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('...', textAlign: TextAlign.center),
+                      child: Text('', textAlign: TextAlign.center),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('...', textAlign: TextAlign.center),
+                      child: Text('', textAlign: TextAlign.center),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        '...',
+                        '',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
@@ -236,7 +284,7 @@ class _PersonaliseScreenState extends State<PersonaliseScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        '...',
+                        '',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
