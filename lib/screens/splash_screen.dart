@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:paradice/screens/menu_screen.dart';
 
@@ -14,12 +15,13 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     // Créer un délai de 5s où la page de chargement apparaît avant d'afficher le menu
-    Future.delayed(Duration(seconds: 5), () {
-      Navigator.pushReplacement(
+    Timer(
+      Duration(seconds: 5),
+      () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const MenuScreen()),
-      );
-    });
+        MaterialPageRoute(builder: (context) => MenuScreen()),
+      ),
+    );
   }
 
   // Affichage des outils à afficher : Logo de l'application sur fond vert et un cercle blanc qui tourne pour montrer le chargement
